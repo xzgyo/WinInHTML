@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(async function() {
+            while (true) {
+                for (var i = 0xE100; i <= 0xE176; ++i) {
+                    $("#loader").empty();
+                    $("#loader").html(`&#x${i.toString(16).padStart(4, "0")};`);
+                    await new Promise(r => setTimeout(r, (1000/38)));
+                }
+            }
+        });
+        </script>
+        <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        @font-face {
+            font-family: "Segoe Boot Semilight";
+            src: url("segoe_slboot.ttf");
+        }
+        .loading {
+            position: absolute;
+            left: 50%;
+            top: 40vh;
+            transform: translate(-50%, -50%);
+            width: 50dvw;
+            height: 50dvw;
+            max-width: 256px;
+            max-height: 256px;
+        }
+        .loading img {
+            width: 50dvw;
+            height: 50dvw;
+            max-width: 256px;
+            max-height: 256px;
+        }
+        #loader {
+            color: white;
+            font-family: "Segoe Boot Semilight";
+            font-size: 2.5rem;
+            margin-top: 40%;
+        }
+        </style>
+    </head>
+    <body style="background-color: black;">
+        <center class="loading">
+            <img src="/win.svg">
+            <p id="loader"></p>
+        </center>
+    </body>
+</html>
